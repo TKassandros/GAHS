@@ -43,7 +43,9 @@ def evaluation(population_for_eval, models, fitness_function, df, target, catego
     population_for_eval: list of chromosomes
     models:              list of meta learners'
     fitness_function:    options "r2" or "mse"
-    df:                  pandas dataframe
+    df:                  pandas dataframe || should contain i) base-learners' estimations, ii) initial features or a subset of them, iii) the true values
+    or target variable and iv) a column named category defining the fold split (e.g. if it is a spatiotemporal problem either a category defining the 
+    different locations or an identifier for the time dimension)
     target:              string, should be included in df, name od target variable column
     category:            string, variable that splits tha data for k-fold cross validatation, should be included in df
     RETURNS:             2 sorted lists with the scores and the chromosomes
