@@ -6,8 +6,7 @@ import random
 from tqdm import tqdm
 import os
 from copy import deepcopy
-import warnings
-import re
+
 
 
 def initilization_of_population(size, n_feat, models):
@@ -224,6 +223,19 @@ def mutation(pop_after_cr, mutation_prob, models):
 def genetic_algorithm(size, n_feat, models, fitness_function, selection_constant, crossover_prob, mutation_prob, n_gen,
                       df, target, category):
     '''
+    size: int, population size
+    n_feat: int, number of features + base learners' estimations
+    models: np.array, list of meta-learners' models
+    fitness_function: string, mse or r2
+    selection_constant: float, constant for tournament selection (recommended 2-5)
+    crossover_prob: float, probability for a chromosome to pass through crossover [0 - 1.0] (recommended 0.5-0.8)
+    mutation_prob: float, probability for a gene to pass through mutation [0 - 1.0] (recommended ?)
+    n_gen: int, number of generations
+    df: pandas dataframe || should contain i) base-learners' estimations, ii) initial features or a subset of them, iii) the true values
+    or target variable and iv) a column named category defining the fold split (e.g. if it is a spatiotemporal problem either a category defining the 
+    different locations or an identifier for the time dimension)
+    target:              string, should be included in df, name od target variable column
+    category:            string, variable that splits tha data for k-fold cross validatation, should be included in df
     Optimizer: Finds the best stacking combination of base-learners', features + the best meta-learner to fit them.
     RETURNS:   1) list of best features 2) list of best scores, for every generation
                the last elements of the lists are the optimal
