@@ -8,7 +8,9 @@ It is also recommended training various base-learners (e.g. tree based, ANNs, SV
 # Example of usage
 
 >> from sklearn.neighbors import KNeighborsRegressor
+>>
 >> from sklearn.linear_model import LinearRegression
+>> 
 >> from xgboost import XGBRegressor
 
 >> run = 'OBSERVED'
@@ -16,16 +18,20 @@ It is also recommended training various base-learners (e.g. tree based, ANNs, SV
 >> df = pd.read_csv()
 
 >> target = df[run]
+
 >> X = df.drop([run], axis=1)
 
 >> LRmodel = LinearRegression()
+
 >> KNN = KNeighborsRegressor(n_neighbors=5, n_jobs =-1)
+
 >> XGB50 = XGBRegressor(n_estimators = 50, 
                                 colsample_bytree=.8,
                                 learning_rate=0.1,
                                 alpha=.1,
                                 tree_method='gpu_hist',
                                 subsample=.8, objective='reg:squarederror')
+                                
 >> XGB300 = XGBRegressor(n_estimators = 300, 
                                 colsample_bytree=.8,
                                 learning_rate=0.1,
@@ -37,6 +43,7 @@ It is also recommended training various base-learners (e.g. tree based, ANNs, SV
 >> X = df.drop([run, 'Fold'], axis=1)
 
 >> In_models = np.array([LRmodel, mean, XGB50, XGB300, KNN]) 
+
 >> chromo, score = genetic_algorithm(n_gen=500, size=23, n_feat=len(X.columns),
                                   models=In_models, fitness_function='mse',
                                   selection_constant=3, crossover_prob=0.7, mutation_prob=0.05,
