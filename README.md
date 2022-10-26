@@ -14,8 +14,9 @@ from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
 
 run = 'OBSERVED'
+# Download Sample Data tp path
 
-df = pd.read_csv()
+df = pd.read_csv('path/')
 
 target = df[run]
 
