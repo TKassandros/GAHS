@@ -5,6 +5,9 @@ The GAHS is a multi-porpuse optimazation methodology resulting to the best combi
 
 It is also recommended training various base-learners (e.g. tree based, ANNs, SVMs with numerous combinations of hyperparameters) in different subsets of features, derived from feature selection methods (e.g. Random Forest Feature Importance, metaheuristics, Correlation based Feature Selection).
 
+# Data Format
+Sample_ENFUSER_FMI.csv is an example file containing Air Quality related data from the Helsinki Area and ENFUSER FMI model (more information about the physical problem can be found in 'doi'). The first columns 
+
 # Example of usage
 ```python
 from sklearn.neighbors import KNeighborsRegressor
@@ -14,9 +17,9 @@ from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
 
 run = 'OBSERVED'
-# Download Sample Data tp path
+# Download Sample Data to path
 
-df = pd.read_csv('path/')
+df = pd.read_csv('path/Sample_ENFUSER_FMI.csv ')
 
 target = df[run]
 
