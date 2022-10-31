@@ -250,7 +250,7 @@ df7 = pd.read_csv('path/PRSA_Data_Huairou_20130301-20170228.csv')
 df8 = pd.read_csv('path/PRSA_Data_Nongzhanguan_20130301-20170228.csv')
 df9 = pd.read_csv('path/PRSA_Data_Shunyi_20130301-20170228.csv')
 df10 = pd.read_csv('path/PRSA_Data_Tiantan_20130301-20170228.csv')
-df11 = pd.read_csv('/=path/PRSA_Data_Wanliu_20130301-20170228.csv')
+df11 = pd.read_csv('path/PRSA_Data_Wanliu_20130301-20170228.csv')
 df12 = pd.read_csv('path/PRSA_Data_Wanshouxigong_20130301-20170228.csv')
 
 df_allStations = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12], ignore_index=True)
