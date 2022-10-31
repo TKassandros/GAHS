@@ -1,4 +1,3 @@
-# Set Up
 from pandas.compat import numpy
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -242,18 +241,18 @@ def train_batch_models(x, y, indexes, un, df):
 
 
 # Read Data
-df1 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Aotizhongxin_20130301-20170228.csv').iloc[:100]
-df2 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Changping_20130301-20170228.csv').iloc[:100]
-df3 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Dingling_20130301-20170228.csv').iloc[:100]
-df4 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Dongsi_20130301-20170228.csv').iloc[:100]
-df5 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Guanyuan_20130301-20170228.csv').iloc[:100]
-df6 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Gucheng_20130301-20170228.csv').iloc[:100]
-df7 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Huairou_20130301-20170228.csv').iloc[:100]
-df8 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Nongzhanguan_20130301-20170228.csv').iloc[:100]
-df9 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Shunyi_20130301-20170228.csv').iloc[:100]
-df10 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Tiantan_20130301-20170228.csv').iloc[:100]
-df11 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Wanliu_20130301-20170228.csv').iloc[:100]
-df12 = pd.read_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/PRSA_Data_Wanshouxigong_20130301-20170228.csv').iloc[:100]
+df1 = pd.read_csv('path/PRSA_Data_Aotizhongxin_20130301-20170228.csv')
+df2 = pd.read_csv('path/PRSA_Data_Changping_20130301-20170228.csv')
+df3 = pd.read_csv('path/PRSA_Data_Dingling_20130301-20170228.csv')
+df4 = pd.read_csv('path/PRSA_Data_Dongsi_20130301-20170228.csv')
+df5 = pd.read_csv('path/PRSA_Data_Guanyuan_20130301-20170228.csv')
+df6 = pd.read_csv('path/PRSA_Data_Gucheng_20130301-20170228.csv')
+df7 = pd.read_csv('path/PRSA_Data_Huairou_20130301-20170228.csv')
+df8 = pd.read_csv('path/PRSA_Data_Nongzhanguan_20130301-20170228.csv')
+df9 = pd.read_csv('path/PRSA_Data_Shunyi_20130301-20170228.csv')
+df10 = pd.read_csv('path/PRSA_Data_Tiantan_20130301-20170228.csv')
+df11 = pd.read_csv('/path/PRSA_Data_Wanliu_20130301-20170228.csv')
+df12 = pd.read_csv('path/GAHS_Evi/PRSA_Data_Wanshouxigong_20130301-20170228.csv')
 
 df_allStations = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12], ignore_index=True)
 un = sorted(df_allStations['station'].unique().tolist())
@@ -275,4 +274,4 @@ all_preds = train_batch_models(x, y, indxx, un, df_allStations)
 df_allStations = df_allStations.rename(columns={'station': 'Fold'})
 Hybrid_BaseLearners = pd.concat([x, all_preds, y, df_allStations['Fold']], axis=1)
 Hybrid_BaseLearners.rename(columns={Hybrid_BaseLearners.columns[-2]: 'PM2.5'},inplace=True)
-Hybrid_BaseLearners.to_csv('/home/teorf/Documents/PHD thesis/GAHS_Evi/Hybrid_BaseLearners.csv', index=False)
+Hybrid_BaseLearners.to_csv('path/Hybrid_BaseLearners.csv', index=False)
