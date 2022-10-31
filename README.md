@@ -54,7 +54,7 @@ XGB300 = XGBRegressor(n_estimators = 300,
 
 X = df.drop([run, 'Fold'], axis=1)
 
-In_models = np.array([LRmodel, mean, XGB50, XGB300, KNN]) 
+In_models = np.array([LRmodel, 'mean', XGB50, XGB300, KNN]) 
 
 chromo, score = genetic_algorithm(n_gen=500, size=23, n_feat=len(X.columns),
                                   models=In_models, fitness_function='mse',
