@@ -161,7 +161,7 @@ def engineer_select_train(calibration_nodes, ref_pol):
 def train_batch_models(x, y, indexes, un, df):
     # un: column with stations names
     # create predictions with stations-fold cross-validation for stacking
-    all_preds = np.zeros([0, 12])  # 14 (6 models for each subset derived from the two feature selection methods)
+    all_preds = np.zeros([0, 10])  # 10 (5 models for each subset derived from the two feature selection methods)
     un_num = 1
     for name in tqdm(un):
         print(f'{un_num}. {name}')
@@ -203,7 +203,7 @@ def train_batch_models(x, y, indexes, un, df):
                                     n_jobs=-1, verbose=-1)
 
             LRmodel = LinearRegression(n_jobs=-1)
-            KNmodel = KNeighborsRegressor(n_neighbors=9, p=1, n_jobs=-1)
+            
 
 
             XGB100.fit(xtrain, ytrain)
@@ -211,7 +211,7 @@ def train_batch_models(x, y, indexes, un, df):
             RFmodel.fit(xtrain, ytrain)
             GBmodel.fit(xtrain, ytrain)
             LRmodel.fit(xtrain, ytrain)
-            KNmodel.fit(xtrain, ytrain)
+            
 
             XGB100_ypred = XGB100.predict(xtest)
             XGB300_ypred = XGB300.predict(xtest)
@@ -219,20 +219,19 @@ def train_batch_models(x, y, indexes, un, df):
             GB_ypred = GBmodel.predict(xtest)
             LR_ypred = LRmodel.predict(xtest)
 
-            KN_ypred = KNmodel.predict(xtest)
+            
 
 
 
             predictions = np.hstack((predictions,
                                      XGB100_ypred.reshape(-1, 1), XGB300_ypred.reshape(-1, 1), RF_ypred.reshape(-1, 1),
-                                     GB_ypred.reshape(-1, 1), LR_ypred.reshape(-1, 1), KN_ypred.reshape(-1, 1)))
+                                     GB_ypred.reshape(-1, 1), LR_ypred.reshape(-1, 1)))
 
         all_preds = np.vstack((all_preds, predictions))
 
     pred_names = []
     for key in indexes:
-        pred_names = pred_names + [f"XGB100_{key}", f"XGB300_{key}", f"RF_{key}", f"GB_{key}", f"LR_{key}",
-                                   f"KNN_{key}"]
+        pred_names = pred_names + [f"XGB100_{key}", f"XGB300_{key}", f"RF_{key}", f"GB_{key}", f"LR_{key}"]
 
     all_preds = pd.DataFrame(all_preds, columns=pred_names)
     all_preds.index = [i for i in range(all_preds.shape[0])]
