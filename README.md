@@ -7,10 +7,13 @@ It is also recommended training various base-learners (e.g. tree based, ANNs, SV
 
 # Data Sample
 
-The [Beijing Multi-Site Air-Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) from UCI Machine Learning Repository will be used for testing the GAHS procedure. 
-
+The [Beijing Multi-Site Air-Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) from UCI Machine Learning Repository will be used for testing the GAHS procedure. In this case we are aiming and depicting the PM2.5 values in each monitoring station using input from all other monitoring stations.
 
 # Example of usage
+
+**First Step - Feature Engineering & Base Learners**
+Download the [data](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) in a local directory. Then run the Base Learners.py. The final outcome should be a csv file (Hybrid_BaseLearenrs.csv), containing the hybrid dataset (features + base-learners), the true values and a column defining the folds.
+
 ```python
 from sklearn.neighbors import KNeighborsRegressor
 
