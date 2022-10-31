@@ -66,7 +66,7 @@ def evaluation(population_for_eval, models, fitness_function, df, target, catego
 
         features = chromosome[:-len(models)]
 
-        if len(s_models) == 1:  # fail-safe cenaio, in case of more than two meta-learners are chooses (it could happen in the crossover)
+        if len(s_models) == 1:  # fail-safe senario, in case of more than two meta-learners are chooses (it could happen in the crossover)
             ch_model = s_models[0]
 
             for name in names:
