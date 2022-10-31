@@ -18,10 +18,11 @@ Download the [data](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+A
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
-
 from sklearn.linear_model import LinearRegression
-
 from xgboost import XGBRegressor
+import warnings
+
+warnings.filterwarnings("ignore")
 
 run = 'PM2.5'
 # Download Sample Data to path
