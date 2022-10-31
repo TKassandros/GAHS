@@ -67,5 +67,5 @@ print('Chosen base-learners and features',X.columns[chromo[-1][:-len(In_models)]
 
 print('Chosen meta-learner',In_models[chromo[-1][-len(In_models):]])
 ```
-# Cite
+# Cite As
 The paper introducing the GAHS methodology is under revision. Until then use this citation https://doi.org/10.3390/atmos13030416 presenting a part of the algorithm.
