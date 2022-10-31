@@ -14,7 +14,7 @@ The [Beijing Multi-Site Air-Quality Data Set](https://archive.ics.uci.edu/ml/dat
 **First Step - Feature Engineering & Base Learners:**
 Download the [data](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) in a local directory. Then run the Base Learners.py. The final outcome should be a csv file (Hybrid_BaseLearners.csv), containing i) the hybrid dataset (features + base-learners), ii) the true values and iii) a column defining the folds.
 
-**Second Step - GAHS:** 
+**Second Step - GAHS:** Apply follwing code with the use of GAHS.py
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
