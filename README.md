@@ -1,5 +1,5 @@
 # GAHS
-Genetic Algorithm Hybrid Stacking
+*Genetic Algorithm Hybrid Stacking*
 
 The GAHS is a multi-porpuse optimazation methodology resulting to the best combination of base-learners, features and meta-learners for ensemble stacking. The procedure is expecting a pandas dataframe containing i) estimations of various machine learning models (base-learners), ii) a set of the initial  features used to make predictions with the base-learners, iii) the true values of the target variable for training phase and iv) a column defining the k-fold cross validation splits. Additionally, a list of the meta-learners should be defined. (it is highly recommended using "fast" or GPU accelerated algorithms). The final outcome is the optimal configuration of ensemble stacking. 
 
@@ -11,8 +11,10 @@ The [Beijing Multi-Site Air-Quality Data Set](https://archive.ics.uci.edu/ml/dat
 
 # Example of usage
 
-**First Step - Feature Engineering & Base Learners**
-Download the [data](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) in a local directory. Then run the Base Learners.py. The final outcome should be a csv file (Hybrid_BaseLearenrs.csv), containing the hybrid dataset (features + base-learners), the true values and a column defining the folds.
+**First Step - Feature Engineering & Base Learners:**
+Download the [data](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) in a local directory. Then run the Base Learners.py. The final outcome should be a csv file (Hybrid_BaseLearners.csv), containing i) the hybrid dataset (features + base-learners), ii) the true values and iii) a column defining the folds.
+
+**Second Step - GAHS:** 
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
@@ -24,7 +26,7 @@ from xgboost import XGBRegressor
 run = 'OBSERVED'
 # Download Sample Data to path
 
-df = pd.read_csv('path/Sample_ENFUSER_FMI.csv ')
+df = pd.read_csv('path/Hybrid_BaseLearners.csv ')
 
 target = df[run]
 
