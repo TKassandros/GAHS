@@ -23,7 +23,7 @@ from sklearn.linear_model import LinearRegression
 
 from xgboost import XGBRegressor
 
-run = 'OBSERVED'
+run = 'PM2.5'
 # Download Sample Data to path
 
 df = pd.read_csv('path/Hybrid_BaseLearners.csv ')
