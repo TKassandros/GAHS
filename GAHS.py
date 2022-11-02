@@ -220,7 +220,7 @@ def mutation(pop_after_cr, mutation_prob, models):
     return population_mut
 
 
-def genetic_algorithm(size, n_feat, models, fitness_function, selection_constant, crossover_prob, mutation_prob, n_gen,
+def GAHS(size, n_feat, models, fitness_function, selection_constant, crossover_prob, mutation_prob, n_gen,
                       df, target, category):
     '''
     size: int, population size
