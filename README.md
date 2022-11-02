@@ -56,7 +56,7 @@ X = df.drop([run, 'Fold'], axis=1)
 
 In_models = np.array([LRmodel, XGB50, XGB300, KNN]) 
 
-chromo, score = genetic_algorithm(n_gen=500, size=23, n_feat=len(X.columns),
+chromo, score = GAHS(n_gen=500, size=23, n_feat=len(X.columns),
                                   models=In_models, fitness_function='mse',
                                   selection_constant=3, crossover_prob=0.7, mutation_prob=0.05,
                                   df=df, target=run, category='Fold')
