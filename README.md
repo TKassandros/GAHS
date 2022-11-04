@@ -35,8 +35,6 @@ X = df.drop([run], axis=1)
 
 LRmodel = LinearRegression()
 
-KNN = KNeighborsRegressor(n_neighbors=5, n_jobs =-1)
-
 XGB50 = XGBRegressor(n_estimators = 50, 
                                 colsample_bytree=.8,
                                 learning_rate=0.1,
@@ -54,7 +52,7 @@ XGB300 = XGBRegressor(n_estimators = 300,
 
 X = df.drop([run, 'Fold'], axis=1)
 
-In_models = np.array([LRmodel, XGB50, XGB300, KNN]) 
+In_models = np.array([LRmodel, XGB50, XGB300]) 
 
 chromo, score = GAHS(n_gen=500, size=23, n_feat=len(X.columns),
                                   models=In_models, fitness_function='mse',
