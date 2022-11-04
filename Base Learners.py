@@ -204,8 +204,6 @@ def train_batch_models(x, y, indexes, un, df):
 
             LRmodel = LinearRegression(n_jobs=-1)
             
-
-
             XGB100.fit(xtrain, ytrain)
             XGB300.fit(xtrain, ytrain)
             RFmodel.fit(xtrain, ytrain)
@@ -220,9 +218,6 @@ def train_batch_models(x, y, indexes, un, df):
             LR_ypred = LRmodel.predict(xtest)
 
             
-
-
-
             predictions = np.hstack((predictions,
                                      XGB100_ypred.reshape(-1, 1), XGB300_ypred.reshape(-1, 1), RF_ypred.reshape(-1, 1),
                                      GB_ypred.reshape(-1, 1), LR_ypred.reshape(-1, 1)))
@@ -266,7 +261,6 @@ for i, row in df_allStations.iterrows():
 
 data1 = df_allStations[['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3', 'TEMP', 'PRES', 'DEWP', 'RAIN', 'wd', 'WSPM']]
 target = 'PM2.5'
-
 
 x, y, indxx = engineer_select_train(data1, target)
 all_preds = train_batch_models(x, y, indxx, un, df_allStations)
