@@ -31,7 +31,6 @@ df = pd.read_csv('path/Hybrid_BaseLearners.csv ')
 
 target = df[run]
 
-X = df.drop([run], axis=1)
 
 LRmodel = LinearRegression()
 
