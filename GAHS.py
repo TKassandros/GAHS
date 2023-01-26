@@ -78,13 +78,30 @@ def evaluation(population_for_eval, models, fitness_function, df, target, catego
                 X_test = X.iloc[Test_indx, :]
                 y_test = Y.iloc[Test_indx]
 
-
                 if ch_model == 'mean':
                     predictions = X_test.iloc[:, features].mean(axis=1)
 
-                else:
-                    ch_model.fit(X_train.iloc[:, features], y_train)
-                    predictions = ch_model.predict(X_test.iloc[:, features])
+                elif ch_model == 'MLR':
+                    model = LinearRegression()#LassoLars(0.01)
+                    model.fit(X_train.iloc[:, features], y_train)
+                    predictions = model.predict(X_test.iloc[:, features])
+
+                elif ch_model == 'XGB':
+                    model = XGBRegressor(n_estimators = 100, 
+                                #colsample_bytree=.8,
+                                learning_rate=0.15,
+                                #alpha=.1,
+                                #tree_method='gpu_hist',
+                                #subsample=.8, 
+                                         n_jobs=-1,
+                                objective='reg:squarederror')
+
+                    model.fit(X_train.iloc[:, features], y_train)
+                    predictions = model.predict(X_test.iloc[:, features])
+                elif ch_model == 'LGB':
+                    model = LGBMRegressor(n_estimators=100, learning_rate=0.15, n_jobs=-1, verbose=-1)
+                    model.fit(X_train.iloc[:, features], y_train)
+                    predictions = model.predict(X_test.iloc[:, features])
 
                 all_preds.append(predictions)
                 true.append(y_test)
