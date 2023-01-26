@@ -17,9 +17,6 @@ Download the [data](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+A
 **Second Step - GAHS:** Apply following code with the use of GAHS.py
 
 ```python
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.linear_model import LinearRegression
-from xgboost import XGBRegressor
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -31,27 +28,7 @@ df = pd.read_csv('path/Hybrid_BaseLearners.csv ')
 
 target = df[run]
 
-
-LRmodel = LinearRegression()
-
-XGB50 = XGBRegressor(n_estimators = 50, 
-                                colsample_bytree=.8,
-                                learning_rate=0.1,
-                                alpha=.1,
-                                tree_method='gpu_hist',
-                                subsample=.8, objective='reg:squarederror')
-                                
-XGB300 = XGBRegressor(n_estimators = 300, 
-                                colsample_bytree=.8,
-                                learning_rate=0.1,
-                                alpha=.1,
-                                tree_method='gpu_hist',
-                                subsample=.8, objective='reg:squarederror'
-                                )
-
-X = df.drop([run, 'Fold'], axis=1)
-
-In_models = np.array([LRmodel, XGB50, XGB300]) 
+In_models = np.array(['MLR'])#, 'LGB', 'MLR', 'XGB'
 
 chromo, score = GAHS(n_gen=500, size=23, n_feat=len(X.columns),
                                   models=In_models, fitness_function='mse',
