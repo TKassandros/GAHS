@@ -42,4 +42,4 @@ print('Chosen base-learners and features',X.columns[chromo[-1][:-len(In_models)]
 print('Chosen meta-learner',In_models[chromo[-1][-len(In_models):]])
 ```
 # Cite As
-The paper introducing the GAHS methodology is under revision. Until then use this citation https://doi.org/10.3390/atmos13030416 presenting a part of the algorithm.
+Kassandros, T. et al. (2023) ‘Machine learning-assisted dispersion modelling based on genetic algorithm-driven ensembles: An application for road dust in Helsinki’, Atmospheric Environment, 307, p. 119818. doi:10.1016/j.atmosenv.2023.119818. 
